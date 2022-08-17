@@ -1,5 +1,6 @@
-# openhab_bridge_publisher
-Publishes commands to openhab using a bridge between openHAB and ROS with HABApp
+# openhab_bridge_image_listener
+
+ROS package which listens and subscribes to the `sensor_msgs/Image` or `sensor_msgs/CompressedImage` topics. This image will be published as command to openHAB using a bridge between openHAB and ROS with HABApp. 
 
 ## Installation
 
@@ -7,7 +8,7 @@ Go to your src folder of your catkin_ws and clone the repository:
 
 ```
 cd ~/catkin_ws/src
-git clone https://github.com/Michdo93/openhab_bridge_publisher.git
+git clone https://github.com/Michdo93/openhab_bridge_image_listener.git
 cd ~/catkin_ws
 catkin_make
 ```
@@ -17,14 +18,8 @@ catkin_make
 You can run each subscriber like following:
 
 ```
-rosrun openhab_bridge_publisher ColorPublisher.py
-rosrun openhab_bridge_publisher ContactPublisher.py
-rosrun openhab_bridge_publisher DateTimePublisher.py
-rosrun openhab_bridge_publisher DimmerPublisher.py
-rosrun openhab_bridge_publisher ImagePublisher.py
-rosrun openhab_bridge_publisher LocationPublisher.py
-rosrun openhab_bridge_publisher NumberPublisher.py
-rosrun openhab_bridge_publisher RollershutterPublisher.py
-rosrun openhab_bridge_publisher StringPublisher.py
-rosrun openhab_bridge_publisher SwitchPublisher.py
+rosrun openhab_bridge_image_listener CompressedImagePublisher.py --topic <topic>
+rosrun openhab_bridge_image_listener ImagePublisher.py --topic <topic>
 ```
+
+Please replace `<topic>` with a topic where you can subscribe a `sensor_msgs/Image` or `sensor_msgs/CompressedImage`.
