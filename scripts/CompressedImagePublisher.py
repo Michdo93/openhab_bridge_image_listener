@@ -84,11 +84,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--topic", type=str, required=True,
                         help="Specify a topic with sensor_msgs/CompressedImage. This topic will be subscribed. The subscribed compressed image will be published to a given openHAB item.")
+    parser.add_argument("--name", type=str, required=False, default="testImage",
+                        help="Specify a Item name. To this openHAB Item the subscribed compressed image will be published to.")
+
     args = parser.parse_args()
 
     topic = str(args.topic)
+    item_name = str(args.name)
 
-    compressedImagePublisher = CompressedImagePublisher("testImage", topic)
+    compressedImagePublisher = CompressedImagePublisher(item_name, topic)
 
     try:
         compressedImagePublisher.start()
